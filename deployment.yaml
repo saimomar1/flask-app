@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: back-end
+          image: 705267007043.dkr.ecr.ap-south-1.amazonaws.com/my_monitoring_app_image:latest
+          ports:
+            - containerPort: 80
